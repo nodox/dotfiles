@@ -56,6 +56,8 @@ set autoread " auto reload file if contents changed
 "set smartindent " indent relative to style of file
 set splitbelow " open new panes to the right
 set splitright " open new panes to the bottom
+set guitablabel=%t " tabline only shows file not full path
+set term=screen-256color
 colorscheme molokai
 " settings for moving windows
 noremap <C-J> <C-W>w
