@@ -87,9 +87,21 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias aag="alias | ag"
 alias gpfwl="git push --force-with-lease"
-
+alias grebase="git fetch && git rebase origin/master"
+alias gmo="git reset --hard origin/$(git_current_branch)"
 # Rebind autocomplete to Shift+Tab
 bindkey '^[[Z' autosuggest-execute
+
+
+# --files: List files that would be searched but do not search
+# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+#export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,tmp}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+bind -x '"\C-p": vim $(fzf);'
 
 eval "$(rbenv init -)"
 
